@@ -75,7 +75,7 @@ window.App = {
           index++;
         });
       })
-
+      self.getAllTweet();
       self.refreshBalance();
     });
   },
