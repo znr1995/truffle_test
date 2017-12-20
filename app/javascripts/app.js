@@ -50,31 +50,7 @@ window.App = {
       accounts = accs;
       account = accounts[0];
     
-
-      //tweet registry
-      TweetRegistry.deployed().then(function(instance){
-        registry = instance;
-        var index = 0;
-        accounts.forEach(address => {
-          registry.register(index,address).then(function(retnum){
-            switch(retuum)
-            {
-              case -1:
-                alert("name already taken!");
-                break;
-              case -2:
-                alert("account address is already registered!");
-                break;
-              case -3:
-                alert("name too long!");
-                break;
-            }
-
-            console.log(registry.getNumberOfAccounts());
-          });
-          index++;
-        });
-      })
+      self.getAllTweet();
 
       self.refreshBalance();
     });
@@ -122,7 +98,7 @@ window.App = {
     });
   },
 
-  sendTweet: function(tweet){
+  sendTweet: function(){
     var self = this;
 
     var tweetString = document.getElementById("tweet").value;
@@ -140,7 +116,10 @@ window.App = {
 
   getAllTweet: function(){
 
-        var tweetLength = tweetAccount.getNumberOfTweets();       
+    var tweetAccount;
+    TweetAccount.deployed().then(function(instance){
+      tweetAccount = instance;
+      var tweetLength = tweetAccount.getNumberOfTweets();       
         var tweets = document.getElementById("tweetTable");
         for(var i=0;i<tweetLength;i++)
         {
@@ -155,6 +134,8 @@ window.App = {
 
           tweets.appendChild(row);  
         }
+    });
+        
   }
 };
 
