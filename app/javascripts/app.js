@@ -109,6 +109,8 @@ window.App = {
         else
           alert("send fail with error code" + result);
       });
+    },function(error){
+      alert("errorMessage:"+err);
     });
     self.getAllTweet();
   },
@@ -133,6 +135,8 @@ window.App = {
 
           tweets.appendChild(row);  
         }
+    },function(err){
+      alert("get all Tweet error:"+err);
     });
         
   }

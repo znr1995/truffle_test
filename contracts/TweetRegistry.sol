@@ -1,3 +1,4 @@
+pragma solidity ^0.4.2;
 /*
 decentralized microblogging 
 Copyright (C) 2015 Jahn Bertsch
